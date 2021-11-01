@@ -4,9 +4,9 @@ namespace GC_RockPaperScissors
 {
     class RPSApp
     {
+        UserPlayer User { get; set; } = new UserPlayer();
         public void Play()
         {
-            UserPlayer User = new UserPlayer();
             while (true)
             {
                 Console.Write("\n::Please choose your opponent::" +
@@ -19,13 +19,13 @@ namespace GC_RockPaperScissors
                 switch (input)
                 {
                     case "1":
-                        PlayRocky(User);
+                        PlayRocky();
                         break;
                     case "2":
-                        PlayRanda(User);
+                        PlayRanda();
                         break;
                     case "3":
-                        PlayTogether(User);
+                        PlayTogether();
                         break;
                     case "4":
                         Console.WriteLine("\n::GOODBYE::");
@@ -37,8 +37,7 @@ namespace GC_RockPaperScissors
                 Console.WriteLine(User);
             }
         }
-
-        public UserPlayer PlayRocky(UserPlayer User)
+        public void PlayRocky()
         {
             Rocky rocky = new Rocky();
             User.Toss = User.GenerateRPS();
@@ -59,9 +58,9 @@ namespace GC_RockPaperScissors
                 Console.WriteLine("\n::YOU LOSE!!::");
                 User.Losses++;
             }
-            return User;
+            return;
         }
-        public UserPlayer PlayRanda(UserPlayer User)
+        public void PlayRanda()
         {
             Randa randa = new Randa();
             User.Toss = User.GenerateRPS();
@@ -92,9 +91,9 @@ namespace GC_RockPaperScissors
                 Console.WriteLine("\n::YOU LOSE!!::");
                 User.Losses++;
             }
-            return User;
+            return;
         }
-        public UserPlayer PlayTogether(UserPlayer User)
+        public void PlayTogether()
         {
             Console.WriteLine("\n::In this mode both Rocky and Randa will try to beat you::");
             Rocky Rocky = new Rocky();
@@ -131,7 +130,7 @@ namespace GC_RockPaperScissors
                     {
                         Console.WriteLine("\n::YOU LOSE!!::");
                         User.Losses++;
-                        return User;
+                        return;
                     }
 
                 }
@@ -160,7 +159,7 @@ namespace GC_RockPaperScissors
                     {
                         Console.WriteLine("\n::YOU LOSE!!::");
                         User.Losses++;
-                        return User;
+                        return;
                     }
 
                 }
@@ -170,7 +169,7 @@ namespace GC_RockPaperScissors
                 {
                     Console.WriteLine("\n::YOU WIN!!::");
                     User.Wins++;
-                    return User;
+                    return;
                 }
 
             }
